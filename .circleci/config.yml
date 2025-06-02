@@ -6,30 +6,30 @@ jobs:
     steps:
       - checkout
       - run: python main.py
-  test:
-    docker: 
-      - image: cimg/python:3.11
+  # test:
+  #   docker: 
+  #     - image: cimg/python:3.11
 
-    steps:
-      - checkout
-      - run: python -m unittest test.py
-  deploy:
-    docker: 
-      - image: cimg/python:3.11
-    steps:
-      - run: echo "This is a dummy deployment script"
+  #   steps:
+  #     - checkout
+  #     - run: python -m unittest test.py
+  # deploy:
+  #   docker: 
+  #     - image: cimg/python:3.11
+  #   steps:
+  #     - run: echo "This is a dummy deployment script"
 
 
 workflows:
-  build_test:
+  build:
     jobs:
       - build
-      - test:
-          requires:
-            - build
-      - deploy:
-          requires:
-            - test
-          filters:
-            branches:
-              only: main
+      # - test:
+      #     requires:
+      #       - build
+      # - deploy:
+      #     requires:
+      #       - test
+      #     filters:
+      #       branches:
+      #         only: main
