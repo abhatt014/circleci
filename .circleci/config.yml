@@ -6,13 +6,13 @@ jobs:
     steps:
       - checkout
       - run: python main.py
-  # test:
-  #   docker: 
-  #     - image: cimg/python:3.11
+  test:
+    docker: 
+      - image: cimg/python:3.11
 
-  #   steps:
-  #     - checkout
-  #     - run: python -m unittest test.py
+    steps:
+      - checkout
+      - run: python -m unittest test.py
   # deploy:
   #   docker: 
   #     - image: cimg/python:3.11
@@ -21,10 +21,10 @@ jobs:
 
 
 workflows:
-  build:
+  build_test:
     jobs:
       - build
-      # - test:
+      - test
       #     requires:
       #       - build
       # - deploy:
